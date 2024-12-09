@@ -1,2 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
+pydantic
+aiofiles  # For serving static files
+fastapi.middleware.cors  # To handle CORS for frontend-backend communication
