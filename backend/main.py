@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from config import PRODUCTION
 
 app = FastAPI()
 
@@ -11,10 +12,15 @@ app = FastAPI()
 #     allow_headers=["*"],
 # )
 
+if PRODUCTION:
+    url = "https://react-front-end-m6xa.onrender.com"
+else:
+    url = "http://localhost:3000"
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://react-front-end-m6xa.onrender.com",  # Frontend deployed on Render
+        url,  # Frontend deployed on Render
     ],
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
