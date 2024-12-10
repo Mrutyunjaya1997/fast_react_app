@@ -6,28 +6,28 @@ const App = () => {
   const [name, setName] = useState("");
   const [greeting, setGreeting] = useState("");
 
-  // const fetchGreeting = async () => {
-  //   try {
-  //     const response = await axios.get(`http://127.0.0.1:8000/greet/${name}`);
-  //     setGreeting(response.data.message);
-  //   } catch (error) {
-  //     console.error("Error fetching greeting:", error);
-  //   }
-  // };
-
   const fetchGreeting = async () => {
-    const API_BASE_URL =
-      process.env.NODE_ENV === "development"
-        ? "http://127.0.0.1:8000"
-        : "https://backed-fast-api.onrender.com";
-  
     try {
-      const response = await axios.get(`${API_BASE_URL}/greet/${name}`);
+      const response = await axios.get(`https://backed-fast-api.onrender.com/greet/${name}`);
       setGreeting(response.data.message);
     } catch (error) {
       console.error("Error fetching greeting:", error);
     }
   };
+
+  // const fetchGreeting = async () => {
+  //   const API_BASE_URL =
+  //     process.env.NODE_ENV === "development"
+  //       ? "http://127.0.0.1:8000"
+  //       : "https://backed-fast-api.onrender.com";
+  
+  //   try {
+  //     const response = await axios.get(`${API_BASE_URL}/greet/${name}`);
+  //     setGreeting(response.data.message);
+  //   } catch (error) {
+  //     console.error("Error fetching greeting:", error);
+  //   }
+  // };
   
 
   return (
